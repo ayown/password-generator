@@ -3,6 +3,7 @@ import './App.css'
 
 
 function App() {
+
   const [length, setLength] = useState(8)
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false)
@@ -25,6 +26,7 @@ function App() {
 
   }, [length, numberAllowed, charAllowed, setPassword])
 
+  // This function copies the generated password to the clipboard
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 999);
@@ -35,6 +37,9 @@ function App() {
   useEffect(() => {
     passwordGenerator()
   }, [length, numberAllowed, charAllowed, passwordGenerator])
+
+
+
   return (
     
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-700 text-black">
@@ -50,7 +55,7 @@ function App() {
         />
         <button
         onClick={copyPasswordToClipboard}
-        className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>copy</button>
+        className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>Copy</button>
       </div>
     <div className='flex text-sm text-white gap-x-2'>
       <div className='flex items-center gap-x-1'>
